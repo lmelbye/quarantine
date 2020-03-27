@@ -9,11 +9,17 @@
             text-align: left;
         }
 
-        body {
+        html,body {
             font-family: Helvetica, Arial, sans-serif;
             font-size: 11pt;
-            margin-left:10px;
-            margin-right:10px;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            overflow-y: auto;
+
         }
 
         table {
@@ -33,10 +39,15 @@
         td {
             border: 1px solid black;
         }
+        .container {
+            padding-left:5px;
+            padding-right:5px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="container">
     <h1>Epidemic simulator</h1>
     <p>
         If a sick particle (red) touches a healthy particle (blue) the healthy particle gets sick.
@@ -65,10 +76,10 @@
         <input type="button" onclick="play();" value="Start">
     </form>
 
-    <canvas style="float:left; margin-right:10px;" id="world" width="375" height="500">
+    <canvas style="float:left;" id="world" width="365" height="500">
     </canvas>
     <div style="float:left;">
-        <canvas id="chart" width="375" height="300">
+        <canvas id="chart" width="365" height="300">
         </canvas>
 
             <table style="width:100%; text-align: left;">
@@ -93,5 +104,6 @@
     </div>
 
     <div style="clear: both;"></div>
+</div>
     <script src="dist/main.js"></script>
 </body>
