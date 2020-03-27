@@ -1,0 +1,93 @@
+<head>
+    <style>
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 10pt;
+        }
+
+        table {
+            font-size: 1em;
+        }
+
+        canvas {
+            margin-bottom:5px;
+            border: 1px solid #000000;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Epidemic simulator</h1>
+    <p>
+        If a sick particle (red) touches a healthy particle (blue) the healthy particle gets sick.
+        After 10 seconds a sick particle gets cured (yellow). <br>
+        Groups will occasionally collide and touching members will get infected. Groups will reflect upon collision.
+        At start 1 % of the population is sick.
+    </p>
+
+    <form>
+        <label>Quarantine strategy:</label>
+        <select id="movement">
+            <optgroup label="Stay home">
+                <option value="all">All move</option>
+                <option value="p50">50 % move</option>
+                <option value="p10">10 % move</option>
+                <option value="p5">5 % move</option>
+            </optgroup>
+            <optgroup label="Groups">
+                <option value="g10">Groups of 10</option>
+                <option value="g5">Groups of 5</option>
+                <option value="g2">Groups of 2</option>
+            </optgroup>
+        </select>
+        <input type="button" onclick="play();" value="Start">
+    </form>
+
+    <canvas style="float:left; margin-right:10px;" id="world" width="700" height="500">
+    </canvas>
+    <div style="float:left;">
+        <canvas id="chart" width="700" height="300">
+        </canvas>
+
+            <table style="width:100%; text-align: left;">
+                <tr>
+                    <td class="text-left">Max sick</td>
+                    <td>Sick</td>
+                    <td>Cured</td>
+                    <td>Healthy</td>
+                    <td><strong>Total</strong></td>
+
+                </tr>
+                <tr>
+                    <td id="maxsick"></td>
+
+                    <td id="sick"></td>
+                    <td id="cured"></td>
+                    <td id="healthy"></td>
+                    <td><strong id="total"></strong></td>
+                </tr>
+
+            </table>
+    </div>
+
+    <div style="clear: both;"></div>
+    <script src="dist/main.js"></script>
+</body>
