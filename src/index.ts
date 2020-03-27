@@ -8,7 +8,7 @@ function assertNever(x: never): never {
 
 export const cureTime = 10;
 export const count = 300
-export const particleRadius = 3;
+export const particleRadius = 2;
 export const particleSpeed = 80;
 export const groupSpeed = 50;
 export const groupDistance = -1;
@@ -27,7 +27,7 @@ window.onload = () => {
     const draw = new Draw(worldCanvas);
     let world : World;
 
-    const select = <HTMLSelectElement> document.getElementById("movement") 
+    const select = <HTMLSelectElement> document.getElementById("movement")
     if (!select) {
         throw "Select not found";
     }
@@ -54,10 +54,10 @@ window.onload = () => {
                 world = bounceWorld(worldCanvas.width, worldCanvas.height, count*0.05);
                 break;
             case 'g10':
-                world = groupWorld(worldCanvas.width, worldCanvas.height, 10, 20);
+                world = groupWorld(worldCanvas.width, worldCanvas.height, 10, 17);
                 break;
             case 'g5':
-                world = groupWorld(worldCanvas.width, worldCanvas.height, 5, 10);
+                world = groupWorld(worldCanvas.width, worldCanvas.height, 5, 8);
                 break;
             case 'g2':
                 world = groupWorld(worldCanvas.width, worldCanvas.height, 2, 6);
@@ -160,7 +160,7 @@ function groupWorld(width : number, height : number, groupSize : number, radius 
             centerx = Math.random() * (width - radius*2) + radius;
             centery = Math.random() * (height - radius*2) + radius;
 
-            closeToGroup = groups.some(g  => 
+            closeToGroup = groups.some(g  =>
                 Math.sqrt((g.centerx - centerx)**2 + (g.centery - centery)**2) < radius*2 + groupDistance
             );
             retry++
@@ -175,15 +175,15 @@ function groupWorld(width : number, height : number, groupSize : number, radius 
             centery,
             speedx,
             speedy,
-            radius, 
+            radius,
             particles : [],
         }
-        
+
         for (let i = 0; i < groupSize; i++) {
 
             let x = Math.random()*radius*2-radius + centerx
             let y = Math.random()*radius*2-radius + centery
-            
+
             const dir = randomUnitVector();
 
             const speedx = dir.x*groupParticleSpeed;
